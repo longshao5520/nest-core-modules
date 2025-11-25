@@ -1,0 +1,51 @@
+{
+  "name": "@longqi/nest-core-modules",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["dist/index.d.ts"]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=9",
+    "@nestjs/core": ">=9",
+    "@typegoose/typegoose": ">=9",
+    "mongoose": ">=6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsup": "^7.2.0",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/cli/gen-config-types.ts --dts --format cjs,esm --sourcemap",
+    "prepack": "pnpm run build",
+    "clean": "rimraf dist"
+  },
+  "bin": {
+    "longqi-gen-config-types": "dist/cli/gen-config-types.js"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3"
+  }
+}
