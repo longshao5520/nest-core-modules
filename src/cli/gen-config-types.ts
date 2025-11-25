@@ -38,7 +38,7 @@ function gen(outFile: string, entries: { key: string; fullPath: string }[]) {
     const k = isIdent(key) ? key : `'${key}'`;
     return `    ${k}: typeof ${alias};`;
   }).join('\n');
-  const content = `import '@longqi/nest-core-modules';\n\n${imports}\n\ndeclare module '@longqi/nest-core-modules' {\n  export interface ConfigRegistry {\n${props}\n  }\n}\n`;
+  const content = `import '@longshao5520/nest-core-modules';\n${imports}\n\ndeclare module '@longshao5520/nest-core-modules' {\n  export interface ConfigRegistry {\n${props}\n  }\n}\n`;
   writeFileSync(outFile, content);
 }
 function run(opts: Opts) {
