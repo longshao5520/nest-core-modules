@@ -1,6 +1,6 @@
 {
   "name": "@longshao5520/nest-core-modules",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -28,6 +28,14 @@
       "require": "./dist/index.cjs"
     }
   },
+  "scripts": {
+    "build": "tsup src/index.ts src/cli/gen-config-types.ts --dts --format cjs,esm --sourcemap",
+    "prepack": "pnpm run build",
+    "clean": "rimraf dist"
+  },
+  "bin": {
+    "longqi-gen-config-types": "dist/cli/gen-config-types.js"
+  },
   "peerDependencies": {
     "@nestjs/common": ">=9",
     "@nestjs/core": ">=9",
@@ -41,15 +49,10 @@
     "tsup": "^7.2.0",
     "typescript": "^5.5.4"
   },
-  "scripts": {
-    "build": "tsup src/index.ts src/cli/gen-config-types.ts --dts --format cjs,esm --sourcemap",
-    "prepack": "pnpm run build",
-    "clean": "rimraf dist"
-  },
-  "bin": {
-    "longqi-gen-config-types": "dist/cli/gen-config-types.js"
-  },
   "dependencies": {
-    "chokidar": "^4.0.3"
+    "@nestjs/axios": "^4.0.1",
+    "axios": "^1.13.2",
+    "chokidar": "^4.0.3",
+    "rxjs": "^7.8.2"
   }
 }
